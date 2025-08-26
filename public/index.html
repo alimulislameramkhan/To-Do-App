@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>🎯 To-Do List</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <div id="parallaxOrbs">
+    
+  </div>
+
+  <body
+    id="body"
+    class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
+  >
+    <div class="todo-container w-full max-w-5xl mx-auto mb-10">
+
+      <!-- Top bar: Dark mode toggle -->
+      <div class="flex justify-end mb-2">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full transition hover:scale-110 hover:bg-gray-200 dark:hover:bg-gray-700"
+        >
+          <i class="fas fa-moon text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Title + Animated Subheading -->
+      <div class="flex flex-col items-center text-center mb-6">
+        <h1
+          class="text-3xl font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2"
+        >
+          🧠 To-Do List
+        </h1>
+        <div class="premium-heading-wrapper mt-2">
+          <span id="animatedHeading" class="premium-heading"></span>
+          <canvas id="particlesCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Input Row -->
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-6 mb-4">
+        <input
+          type="text"
+          id="taskInput"
+          class="task-input col-span-2"
+          placeholder="Add a new task..."
+          aria-label="Task name"
+        />
+        <select id="categoryInput" aria-label="Category">
+          <option value="Personal">Personal 👤</option>
+          <option value="Work">Work 💼</option>
+        </select>
+        <input
+          type="date"
+          id="dueDateInput"
+          class="task-input"
+          aria-label="Due date"
+        />
+        <select id="priorityInput" aria-label="Priority">
+          <option value="Low">🟢 Low</option>
+          <option value="Medium">🟡 Medium</option>
+          <option value="High">🔴 High</option>
+        </select>
+        <button
+          id="addTaskBtn"
+          class="add-button col-span-full sm:col-auto flex items-center justify-center gap-2"
+        >
+          <i class="fas fa-plus"></i> Add
+        </button>
+      </div>
+
+      <!-- Filters Row -->
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-4 mb-4">
+        <input
+          type="text"
+          id="searchInput"
+          class="task-input"
+          placeholder="Search tasks..."
+          aria-label="Search tasks"
+        />
+        <select id="filterInput" aria-label="Filter tasks">
+          <option value="All">📋 All</option>
+          <option value="Completed">✅ Completed</option>
+          <option value="Pending">⏳ Pending</option>
+        </select>
+        <select id="sortInput" aria-label="Sort tasks">
+          <option value="Default">🧾 Default</option>
+          <option value="DueDate">📅 Due Date</option>
+          <option value="Priority">📌 Priority</option>
+        </select>
+        <button
+          id="clearCompletedBtn"
+          class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 flex items-center justify-center gap-2"
+        >
+          <i class="fas fa-broom"></i> Clear Completed
+        </button>
+      </div>
+
+      <!-- Task List -->
+      <ul id="taskList" class="space-y-2 mt-4" role="list"></ul>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
